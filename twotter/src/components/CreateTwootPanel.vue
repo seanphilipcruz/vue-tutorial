@@ -12,11 +12,11 @@
                     </option>
                 </select>
             </div>
-        </div>
 
-        <button>
-            Twoot It!
-        </button>
+            <button>
+                Twoot It!
+            </button>
+        </div>
     </form>
 </template>
 
