@@ -1,31 +1,31 @@
 <template>
     <nav>
-        <div class="navigation__logo">
-            Twotter
-        </div>
-        <div class="navigation__user">
-            {{ state.user.username }}
+        <router-link to="/">
+            <div class="navigation__logo">
+                Twotter
+            </div>
+        </router-link>
+        <div class="navigation__user" v-if="user">
+            {{ user.username }}
         </div>
     </nav>
-
-    <UserProfile />
+    <router-view />
 </template>
 
 <script>
-import { reactive } from 'vue';
-import UserProfile from "@/views/UserProfile";
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
     name: 'App',
-    components: { UserProfile },
     setup() {
-        const state = reactive({
-            user: {
-                username: '_snplpcrz'
-            }
-        });
+        const store = useStore();
 
-        return { state }
+        const user = computed(() => store.state.User.user);
+
+        return {
+            user
+        }
     }
 }
 </script>
